@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   env: {
     customKey: 'my-value',
-    base_url: 'https://tiktok-clone-sepia.vercel.app/',
+    base_url: 'http://localhost:3001/',
   },
   images: {
     domains: ['yth3.ggpht.com', 'lh3.googleusercontent.com'],

@@ -13,7 +13,7 @@ import {GoogleButton} from 'react-google-button'
 import { searchPostsQuery } from '../utils/queries';
 import {createOrGetUser} from '../utils';
 import useAuthStore from '../store/authStore';
-
+import {auth} from '../utils/firebase'
 function Navbar() {
 const {userProfile, addUser, deleteUser} = useAuthStore()
 console.log('useAuthStore', useAuthStore())
@@ -23,12 +23,9 @@ const [value, setSearch] = useState('');
 // const {setUser} = userAuth()
 const router = useRouter();
 const googleSignIn =  (provider) => {
-  const auth = getAuth()
   signInWithPopup(auth, provider)
   // setUser(auth.currentUser)
   setCurrentUserr(auth?.currentUser)
-  createOrGetUser(auth.currentUser, addUser)
-
 }
 
   const user = false;
@@ -41,9 +38,9 @@ const googleSignIn =  (provider) => {
     catch(err) {
       console.log(err)
     }
+    createOrGetUser(auth.currentUser, addUser)
   }
   const handleGoogleSignout = () => {
-    const auth = getAuth()
     signOut(auth);
     console.log('loggedOut successfully')
     deleteUser()

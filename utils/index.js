@@ -23,16 +23,18 @@ import axios from 'axios';
 //   await axios.post(`${BASE_URL}/api/auth`, user);
 // };
 export const createOrGetUser = async (response, addUser) => {
-    console.log(response)
-    const {uid, photoURL, displayName} = response;
-    const user = {
-        _id: uid,
-        _type: 'user',
-        userName: displayName,
-        image: photoURL,
+    // console.log(response)
+    if (response) {
+        const {uid, photoURL, displayName} = response;
+        const user = {
+            _id: uid,
+            _type: 'user',
+            userName: displayName,
+            image: photoURL,
+        }
+        addUser(user)
+        await axios.post(`${process.env.base_url}api/auth`, user)
     }
-    addUser(user)
-    await axios.post(`${process.env.base_url}api/auth`, user)
 }
 // export const createOrGetVideo = async (response) => {
 //     const {}
