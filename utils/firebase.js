@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDWi0bF4WlAk4X8wpGVmyYHcnZdj3QSvMY",
-  authDomain: "https://tiktok-clone-sepia.vercel.app",
+  authDomain: "tiktok-e6d66.firebaseapp.com",
   projectId: "tiktok-e6d66",
   storageBucket: "tiktok-e6d66.appspot.com",
   messagingSenderId: "1729806739",
@@ -14,5 +14,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+firebase.auth().useEmulator('https://tiktok-clone-sepia.vercel.app');
 export const auth = getAuth(app);
